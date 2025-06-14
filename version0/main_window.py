@@ -11,7 +11,8 @@ from scripts.visualization.logistic_equation import EquationDialog
 from scripts.visualization.confusion_matrix import show_confusion_matrix_dialog
 from scripts.visualization.K_Means_Vis import FenetreGraphiqueKMeans
 from scripts.modeling.supervised.decision_tree import apply_decision_tree
-from scripts.modeling.unsupervised.em import apply_em
+from scripts.modeling.unsupervised.DBSCAN import apply_dbscan
+from scripts.modeling.unsupervised.Bicluster import apply_biclustering
 from scripts.modeling.unsupervised.K_Means import apply_kmean
 from scripts.modeling.supervised.linear_regression import apply_linear_regression
 from scripts.preprocessing.feature_selection import apply_feature_selection
@@ -223,8 +224,8 @@ class MainApp(QMainWindow):
             try: 
                 model = self.ui.chooseAlgoCombo_2.currentText().replace(" ", "").lower()
 
-                if model == "emalgorithm":
-                    output_text,output_final, _, _, new_df = apply_em(self, supplied=supplied, test_size=test_size)
+                if model == "dbscan":
+                    output_text, output_final , model, new_df, medoids_df ,self.new1 ,self.new2 = apply_dbscan(self, supplied=supplied, test_size=test_size)
                     self.new_df = new_df
 
                 elif model == "k-means":

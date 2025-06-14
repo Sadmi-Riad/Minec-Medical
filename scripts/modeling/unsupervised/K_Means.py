@@ -12,13 +12,17 @@ def apply_kmean(self, n_clusters, supplied=None, test_size=None):
     if supplied:
         try:
             self.is_test_file=True
-            df_supplied = pd.read_csv(supplied)
-            df_supplied = df_supplied[X.columns]
+            df_supplied=pd.read_csv(supplied)
             if self.pipeline_manager.has_preprocessing_steps():
-                text , df_supplied = apply_pre_on_supplied_simple(self.pipeline_manager , df_supplied)
+                text , df_supplied = apply_pre_on_supplied_simple(self.pipeline_manager , df_supplied,self.df)
+                df_supplied = df_supplied[self.df_filtred.columns]
                 summary = "Preprocess of Supplied File : \n" + text
             else : 
-                summary="No Preprocess of the Supplied File\n"
+                df_supplied = df_supplied[self.df_filtred.columns]
+                summary="No Preprocess of the Supplied File \n"
+            numeric_cols = [col for col in self.df_filtred.columns if pd.api.types.is_numeric_dtype(self.df_filtred[col])]
+            numeric_test_cols = [col for col in numeric_cols if col in df_supplied.columns]
+            df_supplied=df_supplied[numeric_test_cols]
             X_train = X
             X_test = df_supplied
         except Exception as e:
@@ -27,7 +31,7 @@ def apply_kmean(self, n_clusters, supplied=None, test_size=None):
         X_train, X_test = train_test_split(X, test_size=test_size, random_state=42)
     else:
         X_train = X
-        X_test = None
+        X_test = None 
 
     kmeans = KMeans(n_clusters=n_clusters, init="k-means++", n_init=50, random_state=42)
     kmeans.fit(X_train)
