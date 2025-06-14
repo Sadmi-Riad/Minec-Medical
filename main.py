@@ -9,7 +9,7 @@ if __name__ == "__main__":
     icon = QIcon(":/minecLogo.ico")
     app.setWindowIcon(icon)
     window = MainApp()
-    window.setWindowTitle("Minec")
+    window.setWindowTitle("Minepy")
     window.setWindowIcon(icon)
     window.setUnifiedTitleAndToolBarOnMac(False)
     window.setWindowFilePath("/tmp/fichier-factice.txt")

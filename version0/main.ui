@@ -1013,8 +1013,8 @@ QPushButton:disabled { background-color: #8098A8; color: #D0D0D0; }</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>98</width>
-                <height>28</height>
+                <width>236</width>
+                <height>418</height>
                </rect>
               </property>
               <property name="font">
@@ -1179,6 +1179,16 @@ QPushButton:disabled { background-color: #8098A8; color: #D0D0D0; }</string>
                <item>
                 <property name="text">
                  <string>Normalize Data</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Change Variable's Name</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Convert From Float To Integer</string>
                 </property>
                </item>
               </widget>
@@ -2964,11 +2974,6 @@ QPushButton:disabled {
                <item>
                 <property name="text">
                  <string>DBSCAN</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Bicluster</string>
                 </property>
                </item>
               </widget>
