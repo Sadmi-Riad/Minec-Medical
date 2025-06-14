@@ -265,7 +265,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 236, 253))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 236, 252))
         font = QtGui.QFont()
         font.setFamily("Verdana")
         self.scrollAreaWidgetContents.setFont(font)
@@ -494,7 +494,7 @@ class Ui_MainWindow(object):
         self.scrollArea_5.setWidgetResizable(True)
         self.scrollArea_5.setObjectName("scrollArea_5")
         self.scrollAreaWidgetContents_5 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_5.setGeometry(QtCore.QRect(0, 0, 236, 419))
+        self.scrollAreaWidgetContents_5.setGeometry(QtCore.QRect(0, 0, 98, 28))
         font = QtGui.QFont()
         font.setFamily("Verdana")
         self.scrollAreaWidgetContents_5.setFont(font)
@@ -1786,7 +1786,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuView.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(4)
+        self.tabWidget.setCurrentIndex(0)
         self.btn_crossVal.toggled['bool'].connect(self.nbrFoldsBox.setEnabled) # type: ignore
         self.btn_testSet.toggled['bool'].connect(self.btn_file.setEnabled) # type: ignore
         self.btn_crossVal_2.toggled['bool'].connect(self.btn_apply_esti.setEnabled) # type: ignore
