@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="/">
+    <file>minecLogo.ico</file>
+  </qresource>
+</RCC>

@@ -1,0 +1,9 @@
+pandas
+matplotlib
+scikit-learn
+pyqt5
+pyinstaller
+joblib
+imbalanced-learn
+PyQtWebEngine
+seaborn

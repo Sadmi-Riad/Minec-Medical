@@ -1,0 +1,32 @@
+# Ignore Windows system files
+desktop.ini
+Thumbs.db
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment 
+venv/
+.env/
+.venv/
+
+# IDE files (si tu utilises PyCharm, VSCode…)
+.idea/
+.vscode/
+
+# Mac OS system files (au cas où)
+.DS_Store
+*.pyc
+*.pyc
+
+#Riad's 
+test.py
+Datasets/generate.py
+Datasets/dataset_augmente.csv
+Datasets/test_dataset.csv
+Datasets/cancer.csv 
+Datasets/Train_cancer.csv
+scripts/preprocessing/moncsv.csv
+scripts/preprocessing/mon_csv.csv
