@@ -15,7 +15,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setEnabled(True)
-        MainWindow.resize(1200, 700)
+        MainWindow.resize(1200, 699)
         font = QtGui.QFont()
         font.setFamily("Verdana")
         MainWindow.setFont(font)
@@ -1405,6 +1405,7 @@ class Ui_MainWindow(object):
         self.chooseAlgoCombo_2.setObjectName("chooseAlgoCombo_2")
         self.chooseAlgoCombo_2.addItem("")
         self.chooseAlgoCombo_2.addItem("")
+        self.chooseAlgoCombo_2.addItem("")
         self.horizontalLayout_10.addWidget(self.chooseAlgoCombo_2)
         self.btn_apply_2 = QtWidgets.QPushButton(self.groupBox_9)
         self.btn_apply_2.setEnabled(True)
@@ -1785,7 +1786,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuView.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(4)
         self.btn_crossVal.toggled['bool'].connect(self.nbrFoldsBox.setEnabled) # type: ignore
         self.btn_testSet.toggled['bool'].connect(self.btn_file.setEnabled) # type: ignore
         self.btn_crossVal_2.toggled['bool'].connect(self.btn_apply_esti.setEnabled) # type: ignore
@@ -1808,9 +1809,9 @@ class Ui_MainWindow(object):
         self.label_name_static.setText(_translate("MainWindow", "Name :"))
         self.label_filename.setText(_translate("MainWindow", " -"))
         self.label_columns.setText(_translate("MainWindow", " -"))
-        self.label_rows_static.setText(_translate("MainWindow", "Rows : "))
+        self.label_rows_static.setText(_translate("MainWindow", "Observations :"))
         self.label_rows.setText(_translate("MainWindow", " -"))
-        self.label_columns_static.setText(_translate("MainWindow", "Columns : "))
+        self.label_columns_static.setText(_translate("MainWindow", "Variables :"))
         self.btn_saveHisto.setText(_translate("MainWindow", "Save Figure"))
         self.groupAttributs.setTitle(_translate("MainWindow", "Select Attribute"))
         self.btn_select_all.setText(_translate("MainWindow", "Select All"))
@@ -1928,7 +1929,8 @@ class Ui_MainWindow(object):
         self.groupBox_9.setTitle(_translate("MainWindow", "Algorithm"))
         self.chooseAlgoCombo_2.setCurrentText(_translate("MainWindow", "K-Means"))
         self.chooseAlgoCombo_2.setItemText(0, _translate("MainWindow", "K-Means"))
-        self.chooseAlgoCombo_2.setItemText(1, _translate("MainWindow", "EM Algorithm"))
+        self.chooseAlgoCombo_2.setItemText(1, _translate("MainWindow", "DBSCAN"))
+        self.chooseAlgoCombo_2.setItemText(2, _translate("MainWindow", "Bicluster"))
         self.btn_apply_2.setText(_translate("MainWindow", "Train"))
         self.groupBox_12.setTitle(_translate("MainWindow", "Number Of Clusters"))
         self.visualizeBox_2.setTitle(_translate("MainWindow", "Visualize"))

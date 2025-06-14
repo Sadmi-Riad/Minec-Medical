@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>1200</width>
-    <height>700</height>
+    <height>699</height>
    </rect>
   </property>
   <property name="font">
@@ -87,7 +87,7 @@ QTabBar::tab:!selected {
 </string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="tab_importation">
        <property name="font">
@@ -263,7 +263,7 @@ QTabBar::tab:!selected {
                 </font>
                </property>
                <property name="text">
-                <string>Rows : </string>
+                <string>Observations :</string>
                </property>
               </widget>
              </item>
@@ -287,7 +287,7 @@ QTabBar::tab:!selected {
                 </font>
                </property>
                <property name="text">
-                <string>Columns : </string>
+                <string>Variables :</string>
                </property>
               </widget>
              </item>
@@ -2963,7 +2963,12 @@ QPushButton:disabled {
                </item>
                <item>
                 <property name="text">
-                 <string>EM Algorithm</string>
+                 <string>DBSCAN</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Bicluster</string>
                 </property>
                </item>
               </widget>
