@@ -1,5 +1,4 @@
-from PyQt5.QtWidgets import (QDialog, QTextEdit, QVBoxLayout, QPushButton, 
-                             QScrollArea, QHBoxLayout)
+from PyQt5.QtWidgets import (QDialog, QTextEdit, QVBoxLayout, QPushButton, QScrollArea, QHBoxLayout)
 from PyQt5.QtCore import Qt
 
 def show_user_guide_dialog(parent=None):

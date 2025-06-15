@@ -13,8 +13,9 @@ from scripts.preprocessing.handle_outliers import (
     detect_outliers_iqr,
     detect_outliers_isolation_forest
 )
-from version0.dataset_viewer import DatasetViewer
-from version0.histogram import HistogramPlotter
+from GUI.dataset_manipulation import *
+from GUI.dataset_viewer import DatasetViewer
+from GUI.histogram import HistogramPlotter
 from PyQt5.QtGui import QPixmap, QPainter, QIcon, QColor 
 
 
@@ -314,6 +315,10 @@ class UIHelper:
                 output_text = self.main_window.save_and_process(lambda: encode_label(self.main_window), selected_text)
             elif selected_text == "From Numerical to Categorical":
                 output_text = self.main_window.save_and_process(lambda: decode(self.main_window), selected_text)
+            elif selected_text == "Convert From Float To Integer":
+                output_text = self.main_window.save_and_process(lambda: convert_float_to_int(self.main_window), selected_text)
+            elif selected_text == "Change Variable's Name" : 
+                output_text = self.main_window.save_and_process(lambda: columns_rename(self.main_window), selected_text)
         if output_text : 
             self.main_window.ui.op_msg.setPlainText(output_text)
         else :

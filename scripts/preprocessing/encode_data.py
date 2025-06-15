@@ -59,7 +59,7 @@ def encode_label(self):
                 self.pipeline_manager.feature_names.extend(processed_columns)
             else:
                 self.pipeline_manager.feature_names = processed_columns
-
+            self.boolean = True 
         # Build output message
         lines = []
         if processed_columns:

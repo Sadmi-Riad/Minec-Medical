@@ -328,7 +328,8 @@ def apply_pipeline_and_predict(
     try:
         preds = pipeline_manager.model.predict(work)
         work["Predictions"] = preds
-        df = pre_df
+        if boolean == True :
+            df=pre_df
         df["Predictions"] = preds
         log.line(f"Generated predictions for {len(preds)} rows.")
     except Exception as exc:

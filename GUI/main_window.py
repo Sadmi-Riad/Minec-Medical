@@ -4,8 +4,8 @@ import sys
 from PyQt5.QtGui import QKeySequence
 from PyQt5.QtCore import Qt
 from scripts.preprocessing.data_loader import load_csv
-from version0.interface import Ui_MainWindow
-from version0.ui_functions import UIHelper
+from GUI.interface import Ui_MainWindow
+from GUI.ui_functions import UIHelper
 from scripts.modeling.supervised.logistic_regression import apply_logistic_regression
 from scripts.visualization.logistic_equation import EquationDialog
 from scripts.visualization.confusion_matrix import show_confusion_matrix_dialog
@@ -19,8 +19,8 @@ from scripts.preprocessing.feature_selection import apply_feature_selection
 from scripts.visualization.linear_equation import EquationDialogEsti
 from scripts.visualization.decision_tree_test import show_decision_tree
 from scripts.visualization.decision_tree_test2 import DecisionTreeWindow
-from version0.ModelParams import DynamicParameterDialog
-from version0.UserGuide import show_user_guide_dialog
+from GUI.ModelParams import DynamicParameterDialog
+from GUI.UserGuide import show_user_guide_dialog
 from scripts.evaluation.save_model import load_entire_pipeline ,apply_pipeline_and_predict,save_entire_pipeline  
 class MainApp(QMainWindow):
     def __init__(self):
@@ -35,9 +35,11 @@ class MainApp(QMainWindow):
         self.outcome_column = None
         self.target=None # to be checked
         self.outcome_fs = None
+        self.boolean = False # For one hot encoding 
         self.df_filtred = None
         self.matrix = None
         self.undo_stack = []
+        self.stack_columns = []
         self.remove_stack = [] 
         self.saved_params = {
             'logistic_regression': {},
@@ -347,7 +349,7 @@ class MainApp(QMainWindow):
                     else:
                         output_text ,self.processed_column= function(self)
                     if isinstance(self.processed_column, list) and self.processed_column:
-                        if description != "One Hot Encoder" :
+                        if description not in("One Hot Encoder","Change Variable's Name") :
                             copy = copy[self.processed_column]
                         self.undo_stack.append((copy, description, False))
                     if not self.ui_helper.selected_columns:
@@ -480,10 +482,17 @@ class MainApp(QMainWindow):
             self.df = new_df
             self.df_filtred=self.df
         else : 
-            if description == "One Hot Encoder" : 
+            if description in ("One Hot Encoder" ,"Change Variable's Name"): 
                 self.df = df_prev
-                self.df_filtred = self.df
-                self.ui_helper.selected_columns = []
+                if self.ui_helper.selected_columns : 
+                    columns = self.stack_columns.pop()
+                    self.df_filtred = self.df[columns]
+                    self.ui_helper.selected_columns = columns
+                else : 
+                    self.df_filtred = self.df
+                    self.ui_helper.selected_columns = []
+                if description == "One Hot Encoder":
+                    self.boolean = False 
             else : 
                 df = self.df.columns
                 for col in self.df :
@@ -494,7 +503,7 @@ class MainApp(QMainWindow):
                 self.df_filtred = self.df
                 if len(self.ui_helper.selected_columns) != 0: 
                     self.df_filtred = self.df_filtred[self.ui_helper.selected_columns]
-            if description not in ("From Numerical to Categorical" , "Handle Imbalanced Data"):
+            if description not in ("From Numerical to Categorical" , "Handle Imbalanced Data","Change Variable's Name"):
                 self.pipeline_manager.remove_last_preprocessing_step()
             self.ui.op_msg.setPlainText("")
         self.ui_helper.populate_checkboxes()
@@ -578,7 +587,10 @@ class MainApp(QMainWindow):
         if not hasattr(self, "df") or self.df is None or self.df.empty:
             QMessageBox.warning(self, "Missing data", "Please load a dataset first.")
             return
-        logs, new_df,self.df = apply_pipeline_and_predict(pm, self.df, detailed_log=True)
+        if self.boolean == True : 
+            logs, new_df,self.df = apply_pipeline_and_predict(pm, self.df, detailed_log=True)
+        else : 
+            logs , new_df = apply_pipeline_and_predict(pm, self.df, detailed_log=True)
         if number == 1:
             self.ui.text_classifierOutput.setPlainText(logs)
         else:

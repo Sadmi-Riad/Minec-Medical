@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtGui import QIcon
-from version0.main_window import MainApp
+from GUI.main_window import MainApp
 import resources_rc
 
 if __name__ == "__main__":
